@@ -91,6 +91,7 @@ const App = () => {
                   />
                   <Navigation
                     isNavOpen={isNavOpen}
+                    setLoggedIn={setLoggedIn}
                     setNavOpen={setNavOpen}
                     userRole={userRole}
                   />

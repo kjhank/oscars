@@ -210,6 +210,7 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     overflow: hidden;
+    min-height: 100vw;
   }
 
   @keyframes slideFade {

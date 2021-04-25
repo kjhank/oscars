@@ -68,6 +68,8 @@ export const StyledLink = styled(Link)`
   }
 `;
 
+export const LogoutButton = styled(StyledLink)``;
+
 Wrapper.propTypes = {
   isOpen: PropTypes.bool.isRequired,
 };

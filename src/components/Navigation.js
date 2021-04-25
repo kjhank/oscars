@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router';
+import {
+  useHistory,
+  useLocation,
+} from 'react-router';
+import Cookies from 'js-cookie';
 
 import {
   StyledLink as Link,
   List,
   ListItem,
+  LogoutButton,
   Wrapper,
 } from './Navigation.styled';
 
@@ -13,6 +18,7 @@ const NAV_TIMEOUT_MS = 3000;
 
 export const Navigation = ({
   isNavOpen,
+  setLoggedIn,
   setNavOpen,
   userRole,
 }) => {
@@ -23,6 +29,13 @@ export const Navigation = ({
   }, []);
 
   const { pathname } = useLocation();
+  const history = useHistory();
+
+  const handleLogout = () => {
+    Cookies.remove('accessToken');
+    setLoggedIn(false);
+    history.push('/');
+  };
 
   const links = {
     user: [
@@ -72,6 +85,12 @@ export const Navigation = ({
             </Link>
           </ListItem>
         ))}
+        <LogoutButton
+          as="button"
+          onClick={handleLogout}
+        >
+          Log out
+        </LogoutButton>
       </List>
     </Wrapper>
   );
@@ -79,6 +98,7 @@ export const Navigation = ({
 
 Navigation.propTypes = {
   isNavOpen: PropTypes.bool.isRequired,
+  setLoggedIn: PropTypes.func.isRequired,
   setNavOpen: PropTypes.func.isRequired,
   userRole: PropTypes.string.isRequired,
 };
