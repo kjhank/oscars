@@ -62,7 +62,7 @@ export const Admin = ({ getNominations }) => {
               <VotesWrapper>
                 {nominees.map(nominee => (
                   <Label
-                    $isSelected={results[id] === nominee.id}
+                    $isSelected={Number(results[id]) === Number(nominee.id)}
                     key={JSON.stringify(nominee)}
                   >
                     <Radio

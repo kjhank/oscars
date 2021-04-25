@@ -87,6 +87,11 @@ export const SingleItem = styled.li`
   border: 1px solid ${({ theme }) => theme.colors.gray};
   border-radius: ${({ theme }) => theme.spacing.regular};
   padding: ${({ theme }) => theme.spacing.regular};
+  background-color:
+    ${({
+    $isHighlighted,
+    theme,
+  }) => ($isHighlighted ? theme.colors.green : '#fff')};
 
   ${mediaQueries.l} {
     padding: ${({ theme }) => theme.spacing.double};
@@ -120,7 +125,13 @@ export const VoteButton = styled.button.attrs({ type: 'button' })`
 
 export const SubHeading = styled.h3`
   margin-bottom: 5%;
+  color:
+    ${({
+    $isHighlighted,
+    theme,
+  }) => ($isHighlighted ? '#fff' : theme.colors.accent)};
   font-size: 1.5rem;
+  text-align: ${({ centered }) => centered && 'center'};
 `;
 
 export const SubList = styled.ul`

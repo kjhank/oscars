@@ -258,6 +258,7 @@ const GlobalStyle = createGlobalStyle`
 const theme = {
   colors: {
     accent: '#234669',
+    green: '#239e56',
     // brandOrange: '#ff5200',
     // brandRed: '#aa1b2e',
     // brandYellow: '#ffab00',
