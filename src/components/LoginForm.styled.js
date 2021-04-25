@@ -28,7 +28,10 @@ export const Input = styled.input`
     theme,
     type,
   }) => (type === 'email' ? `${theme.spacing.regular} 10% ${theme.spacing.regular} ${theme.spacing.regular}` : theme.spacing.regular)};
-  /* padding-right: ${({ type }) => type !== 'email' && '10%'}; */
+
+  ${mediaQueries.s} {
+    width: 75%;
+  }
 `;
 
 export const Label = styled.label`
