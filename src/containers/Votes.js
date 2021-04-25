@@ -9,9 +9,13 @@ import { postVotes } from '@api';
 
 import {
   DataGrid,
+  Heading,
   Label,
   Radio,
+  SingleItem,
+  SubHeading,
   VoteButton,
+  VotesWrapper,
 } from '@components/common.styled';
 
 export const Votes = ({
@@ -56,26 +60,30 @@ export const Votes = ({
             nominees,
             // slug,
           }) => (
-            <li key={id}>
-              <h2>{name}</h2>
-              <p>Pick your vote:</p>
-              {nominees.map(nominee => (
-                <Label
-                  isSelected={votes[id] === nominee.id}
-                  key={JSON.stringify(nominee)}
-                >
-                  <Radio
-                    name={name}
-                    onChange={event => setVotes({
-                      ...votes,
-                      [id]: event.target.value,
-                    })}
-                    value={nominee.id}
-                  />
-                  {nominee.title}
-                </Label>
-              ))}
-            </li>
+            <SingleItem key={id}>
+              <Heading>{name}</Heading>
+              <SubHeading>Pick your vote:</SubHeading>
+              <VotesWrapper>
+                {nominees.map(nominee => (
+                  <Label
+                    foo={votes[id]}
+                    bar={nominee.id}
+                    $isSelected={Number(votes[id]) === Number(nominee.id)}
+                    key={JSON.stringify(nominee)}
+                  >
+                    <Radio
+                      name={name}
+                      onChange={event => setVotes({
+                        ...votes,
+                        [id]: event.target.value,
+                      })}
+                      value={nominee.id}
+                    />
+                    {nominee.title}
+                  </Label>
+                ))}
+              </VotesWrapper>
+            </SingleItem>
           ))}
         </DataGrid>
         <VoteButton

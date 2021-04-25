@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router';
 
 import {
   StyledLink as Link,
@@ -20,6 +21,8 @@ export const Navigation = ({
       setNavOpen(false);
     }, NAV_TIMEOUT_MS);
   }, []);
+
+  const { pathname } = useLocation();
 
   const links = {
     user: [
@@ -57,8 +60,14 @@ export const Navigation = ({
           text,
           path,
         }) => (
-          <ListItem key={text}>
-            <Link to={path}>
+          <ListItem
+            $isCurrent={path === pathname}
+            key={text}
+          >
+            <Link
+              $isCurrent={path === pathname}
+              to={path}
+            >
               {text}
             </Link>
           </ListItem>

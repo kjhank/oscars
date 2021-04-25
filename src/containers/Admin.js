@@ -9,9 +9,12 @@ import { postResults } from '@api';
 
 import {
   DataGrid,
+  Heading,
   Label,
   Radio,
+  SingleItem,
   VoteButton,
+  VotesWrapper,
 } from '@components/common.styled';
 
 export const Admin = ({ getNominations }) => {
@@ -53,26 +56,28 @@ export const Admin = ({ getNominations }) => {
             nominees,
             // slug,
           }) => (
-            <li key={id}>
-              <h2>{name}</h2>
+            <SingleItem key={id}>
+              <Heading>{name}</Heading>
               <p>Winner:</p>
-              {nominees.map(nominee => (
-                <Label
-                  isSelected={results[id] === nominee.id}
-                  key={JSON.stringify(nominee)}
-                >
-                  <Radio
-                    name={name}
-                    onChange={event => setResults({
-                      ...results,
-                      [id]: event.target.value,
-                    })}
-                    value={nominee.id}
-                  />
-                  {nominee.title}
-                </Label>
-              ))}
-            </li>
+              <VotesWrapper>
+                {nominees.map(nominee => (
+                  <Label
+                    $isSelected={results[id] === nominee.id}
+                    key={JSON.stringify(nominee)}
+                  >
+                    <Radio
+                      name={name}
+                      onChange={event => setResults({
+                        ...results,
+                        [id]: event.target.value,
+                      })}
+                      value={nominee.id}
+                    />
+                    {nominee.title}
+                  </Label>
+                ))}
+              </VotesWrapper>
+            </SingleItem>
           ))}
         </DataGrid>
         <VoteButton

@@ -5,8 +5,13 @@ import React, {
 import { useQuery } from 'react-query';
 import PropTypes from 'prop-types';
 
-import { DataGrid } from '@components/common.styled';
-import { SingleNomination } from '@components/Nominations.styled';
+import {
+  DataGrid,
+  Heading,
+  SingleItem,
+  SubHeading,
+  SubList,
+} from '@components/common.styled';
 
 export const Nominations = ({ getNominations }) => {
   const [
@@ -41,10 +46,10 @@ export const Nominations = ({ getNominations }) => {
           nominees,
           slug,
         }) => (
-          <SingleNomination key={id}>
-            <h2>{name}</h2>
-            <p>Nominees:</p>
-            <ul>
+          <SingleItem key={id}>
+            <Heading>{name}</Heading>
+            <SubHeading>Nominees:</SubHeading>
+            <SubList>
               {nominees.map(nominee => (
                 <li key={`${id}-${nominee.id}`}>
                   <h3>
@@ -54,8 +59,8 @@ export const Nominations = ({ getNominations }) => {
                   </h3>
                 </li>
               ))}
-            </ul>
-          </SingleNomination>
+            </SubList>
+          </SingleItem>
         ))}
       </DataGrid>
     );

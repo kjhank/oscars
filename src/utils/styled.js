@@ -8,9 +8,10 @@ import {
 /* eslint-disable sort-keys */
 
 const breakpoints = {
-  xs: 400,
-  s: 600,
-  m: 800,
+  xxs: 400,
+  xs: 600,
+  s: 700,
+  m: 900,
   l: 1100,
   xl: 1400,
   xxl: 1600,
@@ -207,6 +208,10 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: sub;
   }
 
+  #root {
+    overflow: hidden;
+  }
+
   @keyframes slideFade {
     to {
       opacity: 0;
@@ -247,13 +252,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+/* eslint-disable sort-keys */
+
 const theme = {
   colors: {
+    accent: '#234669',
     // brandOrange: '#ff5200',
     // brandRed: '#aa1b2e',
     // brandYellow: '#ffab00',
     // darkGray: '#1d1d1b',
-    // gray: '#808285',
+    gray: '#808285',
     // highlightRed: '#d70324',
     // shadowOrange: '#d55127',
     // warningRed: '#ac182b',
@@ -261,10 +269,16 @@ const theme = {
   fonts: {
     openSans: '\'Open Sans\', sans-serif',
   },
+  spacing: {
+    regular: '10px',
+    double: '20px',
+  },
   transitions: {
     default: '0.4s',
   },
 };
+
+/* eslint-enable sort-keys */
 
 const Theme = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Label = styled.label``;
+export const Label = styled.label`
+  width: 100%;
+`;
 
 export const Radio = styled.input.attrs({ type: 'radio' })``;
 

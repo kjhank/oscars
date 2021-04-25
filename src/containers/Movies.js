@@ -6,10 +6,12 @@ import { useQuery } from 'react-query';
 import PropTypes from 'prop-types';
 
 import {
-  SingleMovie,
-} from '@components/Movies.styled';
-
-import { DataGrid } from '@components/common.styled';
+  DataGrid,
+  Heading,
+  SingleItem,
+  SubHeading,
+  SubList,
+} from '@components/common.styled';
 
 export const Movies = ({ getData }) => {
   const [
@@ -44,13 +46,13 @@ export const Movies = ({ getData }) => {
             nominations,
             title,
           }) => (
-            <SingleMovie key={id}>
-              {title}
-              <p>Nominated for:</p>
-              <ul>
+            <SingleItem key={id}>
+              <Heading>{title}</Heading>
+              <SubHeading>Nominated for:</SubHeading>
+              <SubList>
                 {nominations.map(({ name }) => <li key={name}>{name}</li>)}
-              </ul>
-            </SingleMovie>
+              </SubList>
+            </SingleItem>
           ))}
         </DataGrid>
       </div>
