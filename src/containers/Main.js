@@ -6,8 +6,10 @@ import {
 import PropTypes from 'prop-types';
 
 import {
+  Admin,
   Movies,
   Nominations,
+  Results,
   Votes,
 } from '@containers';
 
@@ -28,10 +30,12 @@ export const Main = ({
       />
     </Route>
     <Route path="/results">
-      <div>results</div>
+      <Results />
     </Route>
     {userRole === 'admin' && (
-      <Route path="/admin">admin</Route>
+      <Route path="/admin">
+        <Admin getNominations={getNominations} />
+      </Route>
     )}
     <Route path="/">
       <Movies getData={getData} />

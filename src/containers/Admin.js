@@ -5,7 +5,7 @@ import React, {
 import { useQuery } from 'react-query';
 import PropTypes from 'prop-types';
 
-import { postVotes } from '@api';
+import { postResults } from '@api';
 
 import {
   DataGrid,
@@ -14,18 +14,15 @@ import {
   VoteButton,
 } from '@components/common.styled';
 
-export const Votes = ({
-  getNominations,
-  userId,
-}) => {
+export const Admin = ({ getNominations }) => {
   const [
     data,
     setData,
   ] = useState([]);
 
   const [
-    votes,
-    setVotes,
+    results,
+    setResults,
   ] = useState({});
 
   const {
@@ -58,16 +55,16 @@ export const Votes = ({
           }) => (
             <li key={id}>
               <h2>{name}</h2>
-              <p>Pick your vote:</p>
+              <p>Winner:</p>
               {nominees.map(nominee => (
                 <Label
-                  isSelected={votes[id] === nominee.id}
+                  isSelected={results[id] === nominee.id}
                   key={JSON.stringify(nominee)}
                 >
                   <Radio
                     name={name}
-                    onChange={event => setVotes({
-                      ...votes,
+                    onChange={event => setResults({
+                      ...results,
                       [id]: event.target.value,
                     })}
                     value={nominee.id}
@@ -79,11 +76,8 @@ export const Votes = ({
           ))}
         </DataGrid>
         <VoteButton
-          disabled={Object.keys(votes).length < 1}
-          onClick={() => postVotes({
-            userId,
-            votes,
-          })}
+          disabled={Object.keys(results).length < 1}
+          onClick={() => postResults({ results })}
           type="button"
         >
           Vote!
@@ -95,7 +89,6 @@ export const Votes = ({
   return <div>foo</div>;
 };
 
-Votes.propTypes = {
+Admin.propTypes = {
   getNominations: PropTypes.func.isRequired,
-  userId: PropTypes.number.isRequired,
 };

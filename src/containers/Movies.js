@@ -46,6 +46,7 @@ export const Movies = ({ getData }) => {
           }) => (
             <SingleMovie key={id}>
               {title}
+              <p>Nominated for:</p>
               <ul>
                 {nominations.map(({ name }) => <li key={name}>{name}</li>)}
               </ul>

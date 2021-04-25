@@ -27,7 +27,7 @@ export const DataGrid = styled.ul`
   }
 
   ${mediaQueries.l} {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: ${({ columns = 3 }) => `repeat(${columns}, 1fr)`};
   }
 `;
 
@@ -35,3 +35,10 @@ export const MainHeading = styled.h1`
   font-size: 4rem;
   text-align: center;
 `;
+
+export const Label = styled.label``;
+
+export const Radio = styled.input.attrs({ type: 'radio' })``;
+
+export const VoteButton = styled.button.attrs({ type: 'button' })``;
+

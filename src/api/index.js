@@ -74,3 +74,18 @@ export const postVotes = async votes => {
 
   console.log(response);
 };
+
+export const postResults = async results => {
+  const config = getConfig();
+
+  const response = await axios.post(`${API_URL}/results`, results, config);
+
+  console.log(response);
+};
+
+export const getResults = async () => {
+  const config = getConfig();
+  const { data } = await axios.get(`${API_URL}/results`, config);
+
+  return data;
+};
